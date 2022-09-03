@@ -42,7 +42,7 @@ const loadAllMan = async () =>{
   const manField = document.getElementById('manField')
 
   peoples.forEach(people => {
-      console.log(people);
+       console.log(people);
       
       const {details, image_url, total_view, title, thumbnail_url} = people;
       const {img, name, published_date,} = people.author;
@@ -54,7 +54,7 @@ const loadAllMan = async () =>{
       <figure><img width="600px" src="${image_url}" alt="Album"></figure>
               <div class="card-body">
                 <h2 class="card-title">${title}</h2>
-                <p>${details}</p>
+                <p>${details.lenth > 30 ? title.slice(0,30) + '...' : title}</p>
 
                 <div class="grid grid-cols-4 gap-4">
                 <div class="flex">
@@ -69,8 +69,7 @@ const loadAllMan = async () =>{
                     </div>
               </div>
               <div class="flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg
-" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
               <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
@@ -83,11 +82,8 @@ const loadAllMan = async () =>{
                   <input type="radio" name="rating-1" class="mask mask-star" />
                   <input type="radio" name="rating-1" class="mask mask-star" />
                   </div>
-                  <div class="flex items-center">
-                  <svg xmlns="http://www.w3.org/2000/svg
-" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-blue-800">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
+                  <div class="card-actions justify-end">
+                  <label for="my-modal-3" onclick="showModal('${details}','${thumbnail_url}')" class="btn modal-button">Details</label>
                   </div>
               </div>
               </div>
@@ -98,18 +94,15 @@ const loadAllMan = async () =>{
 loadAllMan();
 
 const showModal = (details, thumbnail_url)=>{
-  // console.log(description, image)
+  console.log(details, thumbnail_url)
   const modalBody = document.getElementById("modal-body");
   modalBody.textContent = "";
   modalBody.innerHTML = `
-  <p class="py-4">
-  ${details}
-  </p>
-  <img src="${thumbnail_url}"/>
-  `;
+   <p class="py-4">
+   ${details}
+   </p>
+   <img src="${thumbnail_url}"/>
+   `;
 }
+
 cdn.jsdelivr.net
-
-
-
-
