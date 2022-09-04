@@ -17,7 +17,7 @@ const categoryDisplay = async () => {
         const createCategory = document.createElement('div')
         createCategory.innerHTML = `
         <div class="d-grid gap-2 mb-1">
-            <button onClick="loadNews(${category.category_id})" class="btn btn-outline-dark" type="button">${category.category_name}</button>
+        <button onClick="loadNews(${category.category_id})" class="btn btn-outline-dark" type="button">${category.category_name}</button>
         </div>
         `
         categorySection.appendChild(createCategory);
